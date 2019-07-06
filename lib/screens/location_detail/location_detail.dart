@@ -7,6 +7,7 @@ class LocationDetail extends StatelessWidget {
 
   Widget build(BuildContext context){
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text('Hola'),
       ),
@@ -15,7 +16,7 @@ class LocationDetail extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ImageBanner("assets/images/gate.jpg"),
-          TextSection("bla bla bla", "bla 2"),
+          TextSection("bla bla bla", "bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2"),
           TextSection("bla bla bla", "bla 3"),
           TextSection("bla bla bla", "bla 4"),
         ],
