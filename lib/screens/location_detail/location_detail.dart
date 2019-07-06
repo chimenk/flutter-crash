@@ -1,26 +1,33 @@
 import 'text_section.dart';
 import 'package:flutter/material.dart';
 import 'image_banner.dart';
+import '../../models/location.dart';
 
 class LocationDetail extends StatelessWidget {
+  final int _locationID;
+
+  LocationDetail(this._locationID);
   @override
 
   Widget build(BuildContext context){
+    final location = Location.fetchByID(_locationID);
+
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text('Hola'),
+        title: Text(location.name),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ImageBanner("assets/images/gate.jpg"),
-          TextSection("bla bla bla", "bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2bla 2"),
-          TextSection("bla bla bla", "bla 3"),
-          TextSection("bla bla bla", "bla 4"),
-        ],
+          ImageBanner(location.imagePath),
+        ]..addAll(textSections(location)),
       )
     );
+  }
+
+  List<Widget> textSections(Location location){
+    return location.facts.map((fact) => TextSection(fact.title, fact.text)).toList();
   }
 }
